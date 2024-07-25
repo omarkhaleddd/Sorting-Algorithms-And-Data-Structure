@@ -1,6 +1,6 @@
-# Algorithms Documentation
+# Data Structure Documentation
 
-## QuickSort Algorithm
+## Linked List 
 ### Overview 
 This C++ program implements the QuickSort algorithm, a highly efficient and widely used sorting algorithm. QuickSort follows the divide-and-conquer strategy to sort an array of integers. The algorithm selects a 'pivot' element and partitions the array into two subarrays: elements less than the pivot and elements greater than the pivot. It then recursively applies the same process to the subarrays.
 ### Explaination
