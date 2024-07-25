@@ -50,3 +50,10 @@ QuickSort is not a stable sort. Equal elements might not maintain their original
 
 #### -> In-Place Sorting: 
 QuickSort sorts the array in-place, requiring only a small, constant amount of additional memory.
+
+---
+# Insertion Sort Algorithm
+
+## Overview
+This C++ program implements the Insertion Sort algorithm, a simple and intuitive sorting algorithm that builds the final sorted array (or list) one item at a time. It is similar to how you might sort playing cards in your hands. The algorithm divides the input into a sorted and an unsorted region and repeatedly picks the next item from the unsorted region and inserts it into the correct position in the sorted region.
+
