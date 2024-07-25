@@ -34,7 +34,8 @@ Each node in a singly linked list has two components: data and a pointer to the 
 The linked list class contains a pointer to the head node and methods to perform various operations.
 **Linked List**
 
-``` class LinkedList {
+``` 
+class LinkedList {
 private:
     ListNode *head;
 
