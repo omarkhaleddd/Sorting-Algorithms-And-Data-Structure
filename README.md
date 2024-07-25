@@ -57,3 +57,39 @@ QuickSort sorts the array in-place, requiring only a small, constant amount of a
 ## Overview
 This C++ program implements the Insertion Sort algorithm, a simple and intuitive sorting algorithm that builds the final sorted array (or list) one item at a time. It is similar to how you might sort playing cards in your hands. The algorithm divides the input into a sorted and an unsorted region and repeatedly picks the next item from the unsorted region and inserts it into the correct position in the sorted region.
 
+#### InsertionSort Function
+
+##### Purpose:
+Sorts an array of integers using the Insertion Sort algorithm.
+
+##### Parameters:
+- `array[]`: The array of integers to be sorted.
+- `size`: The number of elements in the array.
+
+##### Process:
+1. **Initialization:** Start with the second element of the array (index 1) as the current element (`key`) to be inserted into the sorted portion.
+2. **Inner Loop:** Compare the `key` with elements in the sorted portion (elements to the left of the current element). If the element in the sorted portion is greater than the `key`, shift the element to the right.
+3. **Insertion:** Insert the `key` into its correct position in the sorted portion.
+### Complexity Analysis
+
+#### Time Complexity
+- **Best Case: 𝑂(𝑛)**
+  - When the array is already sorted, each key is compared with only one element.
+- **Average Case: 𝑂(𝑛^2)**
+  - When elements are randomly ordered, each insertion requires shifting elements.
+- **Worst Case: 𝑂(𝑛^2)**
+  - When the array is sorted in reverse order, each key needs to be compared with all previously sorted elements.
+
+#### Space Complexity
+- **Auxiliary Space: 𝑂(1)**
+  - Insertion Sort sorts the array in-place, using a constant amount of extra memory beyond the input array.
+### Additional Notes
+
+#### Stability:
+Insertion Sort is a stable sort. It maintains the relative order of equal elements.
+
+#### In-Place Sorting:
+Insertion Sort sorts the array in-place, meaning it requires no additional storage proportional to the array size.
+
+---
+
