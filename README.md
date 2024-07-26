@@ -124,22 +124,22 @@ Sorts the array using the Merge Sort algorithm.
 ##### Process:
 - Divide: Find the middle point and recursively sort the left and right halves.
 - Merge: Call the merge function to combine the sorted halves.
-##### Complexity Analysis
-###### Time Complexity
-###### Best Case: 𝑂(𝑛log𝑛)
+### Complexity Analysis
+#### Time Complexity
+##### Best Case: 𝑂(𝑛log𝑛)
 When the array is already sorted or requires minimal merging.
 
-###### Average Case: 𝑂(𝑛log⁡𝑛)
+##### Average Case: 𝑂(𝑛log⁡𝑛)
 On average, the array will be divided and merged in 𝑂(𝑛log⁡𝑛) time.
 
-###### Worst Case: 𝑂(𝑛log𝑛)
+##### Worst Case: 𝑂(𝑛log𝑛)
 The time complexity remains 𝑂(𝑛log𝑛) even if the array is initially unsorted.
 
-###### Space Complexity
-###### Auxiliary Space: 𝑂(𝑛)
+#### Space Complexity
+##### Auxiliary Space: 𝑂(𝑛)
 Merge Sort requires additional space proportional to the size of the array for temporary storage during merging. The space complexity is 𝑂(𝑛) because of the additional space used for the temporary vectors.
 
-##### Additional Notes
+### Additional Notes
 -> Stability:
 Merge Sort is a stable sort. It maintains the relative order of equal elements.
 
