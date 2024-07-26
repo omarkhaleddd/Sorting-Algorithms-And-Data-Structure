@@ -93,3 +93,55 @@ Insertion Sort sorts the array in-place, meaning it requires no additional stora
 
 ---
 
+## Merge Sort Algorithm in C++
+### Overview
+This C++ program implements the Merge Sort algorithm, a stable and efficient sorting algorithm based on the divide-and-conquer strategy. Merge Sort recursively divides the array into smaller subarrays until each subarray contains a single element. It then merges these subarrays back together in sorted order.
+
+### Code Explanation
+#### Merge Function
+##### Purpose:
+Merges two sorted subarrays into a single sorted subarray.
+
+##### Parameters:
+- arr: The array containing the two subarrays to be merged.
+- left: The starting index of the left subarray.
+- mid: The ending index of the left subarray (and the starting index of the right subarray).
+- right: The ending index of the right subarray.
+##### Process:
+- Initialize Sizes: Determine the sizes of the left and right subarrays.
+- Create Temporary Vectors: Create vectors to hold the elements of the left and right subarrays.
+- Copy Data: Copy the elements from arr into the temporary vectors.
+- Merge: Compare elements from the two temporary vectors and merge them back into the original array.
+- Copy Remaining Elements: Copy any remaining elements from the left or right subarrays into the original array.
+#### MergeSort Function
+##### Purpose:
+Sorts the array using the Merge Sort algorithm.
+
+##### Parameters:
+- arr: The array to be sorted.
+- left: The starting index of the subarray.
+- right: The ending index of the subarray.
+##### Process:
+- Divide: Find the middle point and recursively sort the left and right halves.
+- Merge: Call the merge function to combine the sorted halves.
+##### Complexity Analysis
+###### Time Complexity
+- Best Case: 𝑂(𝑛log𝑛)
+When the array is already sorted or requires minimal merging.
+
+Average Case: 𝑂(𝑛log⁡𝑛)
+On average, the array will be divided and merged in 𝑂(𝑛log⁡𝑛) time.
+
+Worst Case: 𝑂(𝑛log𝑛)
+The time complexity remains 𝑂(𝑛log𝑛) even if the array is initially unsorted.
+
+Space Complexity
+Auxiliary Space: 𝑂(𝑛)
+Merge Sort requires additional space proportional to the size of the array for temporary storage during merging. The space complexity is 𝑂(𝑛) because of the additional space used for the temporary vectors.
+
+##### Additional Notes
+-> Stability:
+Merge Sort is a stable sort. It maintains the relative order of equal elements.
+
+-> In-Place Sorting:
+Merge Sort is not an in-place sort. It requires additional space for temporary vectors during the merging process.
