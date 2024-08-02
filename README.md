@@ -145,3 +145,37 @@ Merge Sort is a stable sort. It maintains the relative order of equal elements.
 
 -> In-Place Sorting:
 Merge Sort is not an in-place sort. It requires additional space for temporary vectors during the merging process.
+
+---
+## BFS and DFS on the Graph Algorithm
+### Overview
+This C++ program implements Breadth-First Search (BFS) and Depth-First Search (DFS) algorithms for traversing graphs. BFS explores vertices layer by layer, while DFS explores as far as possible along each branch before backtracking. Both algorithms are essential for solving various graph-related problems.
+### Graph Representation
+The graph is represented using an adjacency list. The adjacency list is a vector of lists where each index represents a vertex, and the list at each index contains the neighboring vertices.
+#### Breadth-First Search (BFS)
+##### BFS Algorithm
+Breadth-First Search (BFS) is used to explore the vertices of a graph in breadthward motion. Starting from a given vertex, it explores all its neighboring vertices at the present depth level before moving on to the vertices at the next depth level.
+
+1. Initialize a queue and enqueue the starting vertex.
+2. Mark the starting vertex as visited.
+3. While the queue is not empty:
+    - Dequeue a vertex from the queue.
+    - For each adjacent vertex, if it has not been visited:
+        -  Mark it as visited.
+        -  Enqueue it.
+#### Depth-First Search (DFS)
+Depth-First Search (DFS) is used to explore the vertices of a graph in depthward motion. Starting from a given vertex, it explores as far as possible along each branch before backtracking.
+-  Mark the starting vertex as visited.
+- For each adjacent vertex, if it has not been visited:
+    - Recursively apply DFS to that vertex.
+#### Complexity Analysis
+##### BFS Time Complexity
+Best, Average, and Worst Case: 𝑂(V + E), where V is the number of vertices and E is the number of edges.
+##### DFS Time Complexity
+Best, Average, and Worst Case: 𝑂(V + E), where V is the number of vertices and E is the number of edges.
+#### Space Complexity
+##### Auxiliary Space for BFS: 𝑂(V), where V is the number of vertices, for the visited array and queue.
+##### Auxiliary Space for DFS: 𝑂(V), where V is the number of vertices, for the visited array and recursion stack.
+#### Additional Notes
+##### BFS: Suitable for finding the shortest path in an unweighted graph.
+##### DFS: Useful for solving problems like topological sorting, finding connected components, and detecting cycles in a graph.
