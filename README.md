@@ -323,3 +323,152 @@ The space used by the queue is proportional to the number of elements in the que
 - Front and Rear Pointers: The front pointer points to the first node, and the rear pointer points to the last node. When the queue is empty, both pointers are nullptr.
 
 ---
+
+## Binary Search Tree
+### Overview
+A tree is a hierarchical data structure consisting of nodes connected by edges. Each node contains:
+- Data
+- References (or links) to its child nodes
+
+### Types of Trees
+1. Binary Tree: Each node has at most two children, referred to as the left child and the right child.
+2. Binary Search Tree (BST): A binary tree in which each node's value is greater than the values in its left subtree and less than the values in its right subtree.
+3. AVL Tree: A self-balancing binary search tree where the difference in heights between left and right subtrees cannot be more than one for all nodes.
+
+### Basic Operations
+1. Insertion: Add a node at the appropriate position maintaining the tree properties.
+2. Deletion: Remove a node and restructure the tree to maintain its properties.
+3. Traversal: Visit all the nodes in a specific order.
+4. Search: Find a node with a specific value.
+### Binary Tree Implementation in C++
+#### Node Structure
+Each node in a binary tree has three components: data, a pointer to the left child, and a pointer to the right child.
+```
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+```
+#### Tree Class
+The tree class contains a pointer to the root node and methods to perform various operations.
+```
+class BinaryTree {
+private:
+    TreeNode *root;
+```
+##### Insert Node
+```
+    TreeNode* insertRec(TreeNode* node, int val) {
+        if (node == nullptr) {
+            return new TreeNode(val);
+        }
+        if (val < node->val) {
+            node->left = insertRec(node->left, val);
+        } else if (val > node->val) {
+            node->right = insertRec(node->right, val);
+        }
+        return node;
+    }
+```
+##### Deleting a Node
+```
+  TreeNode* deleteRec(TreeNode* root, int key) {
+        if (root == nullptr) return root;
+
+        // Traverse the tree
+        if (key < root->val) {
+            root->left = deleteRec(root->left, key);
+        } else if (key > root->val) {
+            root->right = deleteRec(root->right, key);
+        } else {
+            // Node to be deleted found
+
+            // Node with only one child or no child
+            if (root->left == nullptr) {
+                TreeNode* temp = root->right;
+                delete root;
+                return temp;
+            } else if (root->right == nullptr) {
+                TreeNode* temp = root->left;
+                delete root;
+                return temp;
+            }
+
+            // Node with two children: Get the in-order successor (smallest in the right subtree or largest in the left subtree)
+            TreeNode* temp = minValueNode(root->right);
+
+            // Copy the in-order successor's content to this node
+            root->val = temp->val;
+
+            // Delete the in-order successor with the same value in the right subtree ( duplicated )
+            root->right = deleteRec(root->right, temp->val);
+        }
+        return root;
+    }
+
+    // Helper function to find the node with the minimum value (in-order successor)
+    TreeNode* minValueNode(TreeNode* node) {
+        TreeNode* current = node;
+        while (current && current->left != nullptr)
+            current = current->left;
+        return current;
+    }
+```
+##### Seach For Node
+```
+    bool searchRec(TreeNode* node, int val) {
+        if (node == nullptr) {
+            return false;
+        }
+        if (node->val == val) {
+            return true;
+        }
+        if (val < node->val) {
+            return searchRec(node->left, val);
+        } else {
+            return searchRec(node->right, val);
+        }
+    }
+```
+##### Inorder Traversal
+```
+    void inorderRec(TreeNode* node) {
+        if (node != nullptr) {
+            inorderRec(node->left);
+            std::cout << node->val << " ";
+            inorderRec(node->right);
+        }
+    }
+```
+##### Preorder Traversal
+```
+    void preorderRec(TreeNode* node) {
+        if (node != nullptr) {
+            std::cout << node->val << " ";
+            preorderRec(node->left);
+            preorderRec(node->right);
+        }
+    }
+```
+##### Postorder Traversal
+```
+    void postorderRec(TreeNode* node) {
+        if (node != nullptr) {
+            postorderRec(node->left);
+            postorderRec(node->right);
+            std::cout << node->val << " ";
+        }
+    }
+
+```
+### Complexity Analysis
+#### Time Complexity
+##### Best Case for Insertion: 𝑂(log 𝑛) for Binary Search tree
+##### Average & Worst Case: 𝑂(𝑛)
+#### Space Complexity
+##### Auxiliary Space: 𝑂(1)
+The space used is constant because you only need a few pointers to keep track of the current node and its children.
