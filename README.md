@@ -93,3 +93,89 @@ Insertion Sort sorts the array in-place, meaning it requires no additional stora
 
 ---
 
+## Merge Sort Algorithm in C++
+### Overview
+This C++ program implements the Merge Sort algorithm, a stable and efficient sorting algorithm based on the divide-and-conquer strategy. Merge Sort recursively divides the array into smaller subarrays until each subarray contains a single element. It then merges these subarrays back together in sorted order.
+
+### Code Explanation
+#### Merge Function
+##### Purpose:
+Merges two sorted subarrays into a single sorted subarray.
+
+##### Parameters:
+- arr: The array containing the two subarrays to be merged.
+- left: The starting index of the left subarray.
+- mid: The ending index of the left subarray (and the starting index of the right subarray).
+- right: The ending index of the right subarray.
+##### Process:
+- Initialize Sizes: Determine the sizes of the left and right subarrays.
+- Create Temporary Vectors: Create vectors to hold the elements of the left and right subarrays.
+- Copy Data: Copy the elements from arr into the temporary vectors.
+- Merge: Compare elements from the two temporary vectors and merge them back into the original array.
+- Copy Remaining Elements: Copy any remaining elements from the left or right subarrays into the original array.
+#### MergeSort Function
+##### Purpose:
+Sorts the array using the Merge Sort algorithm.
+
+##### Parameters:
+- arr: The array to be sorted.
+- left: The starting index of the subarray.
+- right: The ending index of the subarray.
+##### Process:
+- Divide: Find the middle point and recursively sort the left and right halves.
+- Merge: Call the merge function to combine the sorted halves.
+### Complexity Analysis
+#### Time Complexity
+##### Best Case: 𝑂(𝑛log𝑛)
+When the array is already sorted or requires minimal merging.
+
+##### Average Case: 𝑂(𝑛log⁡𝑛)
+On average, the array will be divided and merged in 𝑂(𝑛log⁡𝑛) time.
+
+##### Worst Case: 𝑂(𝑛log𝑛)
+The time complexity remains 𝑂(𝑛log𝑛) even if the array is initially unsorted.
+
+#### Space Complexity
+##### Auxiliary Space: 𝑂(𝑛)
+Merge Sort requires additional space proportional to the size of the array for temporary storage during merging. The space complexity is 𝑂(𝑛) because of the additional space used for the temporary vectors.
+
+### Additional Notes
+-> Stability:
+Merge Sort is a stable sort. It maintains the relative order of equal elements.
+
+-> In-Place Sorting:
+Merge Sort is not an in-place sort. It requires additional space for temporary vectors during the merging process.
+
+---
+## BFS and DFS on the Graph Algorithm
+### Overview
+This C++ program implements Breadth-First Search (BFS) and Depth-First Search (DFS) algorithms for traversing graphs. BFS explores vertices layer by layer, while DFS explores as far as possible along each branch before backtracking. Both algorithms are essential for solving various graph-related problems.
+### Graph Representation
+The graph is represented using an adjacency list. The adjacency list is a vector of lists where each index represents a vertex, and the list at each index contains the neighboring vertices.
+#### Breadth-First Search (BFS)
+##### BFS Algorithm
+Breadth-First Search (BFS) is used to explore the vertices of a graph in breadthward motion. Starting from a given vertex, it explores all its neighboring vertices at the present depth level before moving on to the vertices at the next depth level.
+
+1. Initialize a queue and enqueue the starting vertex.
+2. Mark the starting vertex as visited.
+3. While the queue is not empty:
+    - Dequeue a vertex from the queue.
+    - For each adjacent vertex, if it has not been visited:
+        -  Mark it as visited.
+        -  Enqueue it.
+#### Depth-First Search (DFS)
+Depth-First Search (DFS) is used to explore the vertices of a graph in depthward motion. Starting from a given vertex, it explores as far as possible along each branch before backtracking.
+-  Mark the starting vertex as visited.
+- For each adjacent vertex, if it has not been visited:
+    - Recursively apply DFS to that vertex.
+#### Complexity Analysis
+##### BFS Time Complexity
+Best, Average, and Worst Case: 𝑂(V + E), where V is the number of vertices and E is the number of edges.
+##### DFS Time Complexity
+Best, Average, and Worst Case: 𝑂(V + E), where V is the number of vertices and E is the number of edges.
+#### Space Complexity
+##### Auxiliary Space for BFS: 𝑂(V), where V is the number of vertices, for the visited array and queue.
+##### Auxiliary Space for DFS: 𝑂(V), where V is the number of vertices, for the visited array and recursion stack.
+#### Additional Notes
+##### BFS: Suitable for finding the shortest path in an unweighted graph.
+##### DFS: Useful for solving problems like topological sorting, finding connected components, and detecting cycles in a graph.
