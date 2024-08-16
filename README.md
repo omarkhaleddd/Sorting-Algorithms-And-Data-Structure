@@ -472,3 +472,95 @@ private:
 #### Space Complexity
 ##### Auxiliary Space: 𝑂(1)
 The space used is constant because you only need a few pointers to keep track of the current node and its children.
+
+---
+## HashMap
+### Overview
+A hashmap is a data structure that implements an associative array, a structure that can map keys to values. It uses a hash function to compute an index into an array of buckets or slots, from which the desired value can be found.
+### Key Concepts
+- Hash Function: Converts a key into an index in the array.
+- Buckets: Slots in the underlying array where data is stored.
+- Collision Handling: A method to handle two keys that hash to the same index.
+    - Separate Chaining: Each bucket contains a list of key-value pairs.
+    - Open Addressing: Finds the next available bucket in the array.
+### Basic Operations
+- Insertion: Add a key-value pair to the hashmap.
+- Deletion: Remove a key-value pair from the hashmap.
+- Search: Find the value associated with a specific key.
+- Rehashing: Resize the hashmap when the load factor exceeds a certain threshold.
+### Hashmap Implementation in C++
+#### Table Structure
+The hashmap uses a vector of lists to handle collisions through separate chaining. Each list contains pairs of keys and values.
+### Hashmap Class
+The hashmap class contains the table and methods to perform various operations.
+```
+template <typename KeyType, typename ValueType>
+class HashMap {
+private:
+    vector<list<pair<KeyType, ValueType>>> table;
+    hash<KeyType> hashFunc; // Hash function to map keys to bucket indices
+};
+public:
+    HashMap(size_t size = 100) : table(size) {}
+```
+#### Insertion
+Add a key-value pair to the hashmap.
+```
+    void insert(const KeyType& key, const ValueType& value) {
+        size_t index = hashFunc(key) % table.size();
+        for (auto& kv : table[index]) {
+            if (kv.first == key) {
+                kv.second = value; // Update existing key
+                return;
+            }
+        }
+        table[index].emplace_back(key, value); // Insert new key-value pair
+    }
+```
+#### Deletion
+Remove a key-value pair from the hashmap.
+```
+    // Remove a key-value pair from the hashmap
+    bool remove(const KeyType& key) {
+        size_t index = hashFunc(key) % table.size();
+        for (auto it = table[index].begin(); it != table[index].end(); ++it) {
+            if (it->first == key) {
+                table[index].erase(it);
+                return true; // Key found and removed
+            }
+        }
+        return false; // Key not found
+    }
+```
+#### Searching for a Key
+Find the value associated with a specific key.
+```
+   // Get the value associated with a key
+    bool get(const KeyType& key, ValueType& value) const {
+        size_t index = hashFunc(key) % table.size();
+        for (const auto& kv : table[index]) {
+            if (kv.first == key) {
+                value = kv.second;
+                return true;
+            }
+        }
+        return false; // Key not found
+    }
+```
+### Complexity Analysis
+#### Time Complexity:
+
+##### Best Case for Insertion: 𝑂(1)
+- Direct insertion without collisions.
+##### Worst Case: 𝑂(𝑛)
+- All keys collide into the same bucket.
+#### Space Complexity:
+
+#### Auxiliary Space: 𝑂(1)
+- The space used is constant apart from the space required to store the elements themselves.
+
+
+
+
+
+
